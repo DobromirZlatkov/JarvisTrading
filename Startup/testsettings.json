@@ -1,0 +1,11 @@
+﻿{
+  "General": {
+    "WebAssemblyName": "JarvisTrading.Startup"
+  },
+  "ApplicationSettings": {
+    "Secret": "My Fake Secret"
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "My Fake Connection String"
+  }
+}
