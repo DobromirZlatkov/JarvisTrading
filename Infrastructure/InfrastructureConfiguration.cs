@@ -33,13 +33,13 @@
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .AddDbContext<CarRentalDbContext>(options => options
+                .AddDbContext<JarvisTradingDbContext>(options => options
                     .UseSqlServer(
                         configuration.GetConnectionString("DefaultConnection"),
                         sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(CarRentalDbContext).Assembly.FullName)))
-                .AddScoped<IDealershipDbContext>(provider => provider.GetService<CarRentalDbContext>())
-                .AddScoped<IStatisticsDbContext>(provider => provider.GetService<CarRentalDbContext>())
+                            .MigrationsAssembly(typeof(JarvisTradingDbContext).Assembly.FullName)))
+                .AddScoped<IDealershipDbContext>(provider => provider.GetService<JarvisTradingDbContext>())
+                .AddScoped<IStatisticsDbContext>(provider => provider.GetService<JarvisTradingDbContext>())
                 .AddTransient<IInitializer, DatabaseInitializer>();
 
         internal static IServiceCollection AddRepositories(this IServiceCollection services)
@@ -65,7 +65,7 @@
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireUppercase = false;
                 })
-                .AddEntityFrameworkStores<CarRentalDbContext>();
+                .AddEntityFrameworkStores<JarvisTradingDbContext>();
 
             var secret = configuration
                 .GetSection(nameof(ApplicationSettings))

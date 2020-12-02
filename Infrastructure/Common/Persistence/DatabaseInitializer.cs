@@ -9,11 +9,11 @@
 
     internal class DatabaseInitializer : IInitializer
     {
-        private readonly CarRentalDbContext db;
+        private readonly JarvisTradingDbContext db;
         private readonly IEnumerable<IInitialData> initialDataProviders;
 
         public DatabaseInitializer(
-            CarRentalDbContext db,
+            JarvisTradingDbContext db,
             IEnumerable<IInitialData> initialDataProviders)
         {
             this.db = db;

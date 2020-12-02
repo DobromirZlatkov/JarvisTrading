@@ -5,8 +5,9 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyName>CarRentalSystem.Domain</AssemblyName>
-    <RootNamespace>CarRentalSystem.Domain</RootNamespace>
+    <AssemblyName>JarvisTrading.Domain</AssemblyName>
+    <RootNamespace>JarvisTrading.Domain</RootNamespace>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">

@@ -41,8 +41,7 @@
                     .AllowAnyMethod())
                 .UseAuthentication()
                 .UseAuthorization()
-                .UseEndpoints(endpoints => endpoints
-                    .MapControllers())
+                .UseEndpoints(endpoints => endpoints.MapControllers())
                 .Initialize();
         }
     }

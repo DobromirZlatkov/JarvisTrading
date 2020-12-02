@@ -19,10 +19,10 @@
         {
             // Arrange
             var serviceCollection = new ServiceCollection()
-                .AddDbContext<CarRentalDbContext>(opts => opts
+                .AddDbContext<JarvisTradingDbContext>(opts => opts
                     .UseInMemoryDatabase(Guid.NewGuid().ToString()))
                 .AddScoped<IDealershipDbContext>(provider => provider
-                    .GetService<CarRentalDbContext>())
+                    .GetService<JarvisTradingDbContext>())
                 .AddTransient<IEventDispatcher, EventDispatcher>();
 
             // Act

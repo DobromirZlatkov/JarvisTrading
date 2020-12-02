@@ -16,15 +16,15 @@
     using Microsoft.EntityFrameworkCore;
     using Statistics;
 
-    internal class CarRentalDbContext : IdentityDbContext<User>,
+    internal class JarvisTradingDbContext : IdentityDbContext<User>,
         IDealershipDbContext,
         IStatisticsDbContext
     {
         private readonly IEventDispatcher eventDispatcher;
         private readonly Stack<object> savesChangesTracker;
 
-        public CarRentalDbContext(
-            DbContextOptions<CarRentalDbContext> options,
+        public JarvisTradingDbContext(
+            DbContextOptions<JarvisTradingDbContext> options,
             IEventDispatcher eventDispatcher)
             : base(options)
         {

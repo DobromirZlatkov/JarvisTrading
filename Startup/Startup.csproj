@@ -6,8 +6,8 @@
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateProgramFile>false</GenerateProgramFile>
-    <AssemblyName>CarRentalSystem.Startup</AssemblyName>
-    <RootNamespace>CarRentalSystem.Startup</RootNamespace>
+    <AssemblyName>JarvisTrading.Startup</AssemblyName>
+    <RootNamespace>JarvisTrading.Startup</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">

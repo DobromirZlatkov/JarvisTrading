@@ -25,20 +25,20 @@
         {
             // Arrange
             var services = new ServiceCollection()
-                .AddDbContext<CarRentalDbContext>(opts => opts
+                .AddDbContext<JarvisTradingDbContext>(opts => opts
                     .UseInMemoryDatabase(Guid.NewGuid().ToString()))
                 .AddScoped<IDealershipDbContext>(provider => provider
-                    .GetService<CarRentalDbContext>())
+                    .GetService<JarvisTradingDbContext>())
                 .AddScoped<IStatisticsDbContext>(provider => provider
-                    .GetService<CarRentalDbContext>())
+                    .GetService<JarvisTradingDbContext>())
                 .AddTransient<IEventDispatcher, EventDispatcher>()
                 .AddAutoMapper(Assembly.GetExecutingAssembly())
-                .AddTransient<IEventHandler<CarAdAddedEvent>, CarAdAddedEventHandler>()
+                //.AddTransient<IEventHandler<CarAdAddedEvent>, CarAdAddedEventHandler>()
                 .AddRepositories()
                 .BuildServiceProvider();
 
             var dealer = DealerFakes.Data.GetDealer();
-            var dbContext = services.GetService<CarRentalDbContext>();
+            var dbContext = services.GetService<JarvisTradingDbContext>();
 
             var statisticsToAdd = new StatisticsData()
                 .GetData()

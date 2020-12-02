@@ -5,8 +5,8 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyName>CarRentalSystem.Application</AssemblyName>
-    <RootNamespace>CarRentalSystem.Application</RootNamespace>
+    <AssemblyName>JarvisTrading.Application</AssemblyName>
+    <RootNamespace>JarvisTrading.Application</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
