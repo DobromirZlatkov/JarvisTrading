@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JarvisTrading.Infrastructure.Common.Persistence.Migrations
 {
-    [DbContext(typeof(CarRentalDbContext))]
-    [Migration("20200930140445_UserDealershipRelationship")]
-    partial class UserDealershipRelationship
+    [DbContext(typeof(JarvisTradingDbContext))]
+    [Migration("20201227184444_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -125,6 +124,118 @@ namespace JarvisTrading.Infrastructure.Common.Persistence.Migrations
                         .IsUnique();
 
                     b.ToTable("Dealers");
+                });
+
+            modelBuilder.Entity("JarvisTrading.Domain.SignalScraping.Models.Receiver", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("SignalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SignalId");
+
+                    b.ToTable("Receivers");
+                });
+
+            modelBuilder.Entity("JarvisTrading.Domain.SignalScraping.Models.Signal", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Asset")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CloseTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Magic")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OpenTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<Guid?>("Ref_Source")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Result")
+                        .HasColumnType("float");
+
+                    b.Property<int>("SignalType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("SourceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SourceMessage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("StopLoss")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TakeProfit")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Ref_Source");
+
+                    b.HasIndex("SourceId");
+
+                    b.ToTable("Signals");
+                });
+
+            modelBuilder.Entity("JarvisTrading.Domain.SignalScraping.Models.Source", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sources");
+                });
+
+            modelBuilder.Entity("JarvisTrading.Domain.SignalScraping.Models.Update", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SignalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SourceMessage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SignalId");
+
+                    b.ToTable("Updates");
                 });
 
             modelBuilder.Entity("JarvisTrading.Domain.Statistics.Models.CarAdView", b =>
@@ -449,6 +560,32 @@ namespace JarvisTrading.Infrastructure.Common.Persistence.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("DealerId");
                         });
+                });
+
+            modelBuilder.Entity("JarvisTrading.Domain.SignalScraping.Models.Receiver", b =>
+                {
+                    b.HasOne("JarvisTrading.Domain.SignalScraping.Models.Signal", null)
+                        .WithMany("ReceivedBy")
+                        .HasForeignKey("SignalId");
+                });
+
+            modelBuilder.Entity("JarvisTrading.Domain.SignalScraping.Models.Signal", b =>
+                {
+                    b.HasOne("JarvisTrading.Domain.SignalScraping.Models.Source", "SourceType")
+                        .WithMany()
+                        .HasForeignKey("Ref_Source")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("JarvisTrading.Domain.SignalScraping.Models.Source", null)
+                        .WithMany("Signals")
+                        .HasForeignKey("SourceId");
+                });
+
+            modelBuilder.Entity("JarvisTrading.Domain.SignalScraping.Models.Update", b =>
+                {
+                    b.HasOne("JarvisTrading.Domain.SignalScraping.Models.Signal", null)
+                        .WithMany("Updates")
+                        .HasForeignKey("SignalId");
                 });
 
             modelBuilder.Entity("JarvisTrading.Domain.Statistics.Models.CarAdView", b =>

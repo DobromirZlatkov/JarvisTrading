@@ -30,4 +30,8 @@
     <PackageReference Include="Scrutor" Version="3.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Signals\Services\" />
+  </ItemGroup>
+
 </Project>

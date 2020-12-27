@@ -5,18 +5,9 @@
     <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyName>CarRentalSystem.Infrastructure</AssemblyName>
-    <RootNamespace>CarRentalSystem.Infrastructure</RootNamespace>
+    <AssemblyName>JarvisTrading.Infrastructure</AssemblyName>
+    <RootNamespace>JarvisTrading.Infrastructure</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Common\Persistence\Migrations\20200915172440_StatisticsTables.cs" />
-    <Compile Remove="Common\Persistence\Migrations\20200915172440_StatisticsTables.Designer.cs" />
-    <Compile Remove="Common\Persistence\Migrations\20200915172749_StatisticsTables.cs" />
-    <Compile Remove="Common\Persistence\Migrations\20200915172749_StatisticsTables.Designer.cs" />
-    <Compile Remove="Common\Persistence\Migrations\20200930140203_UserDealershipDelationship.cs" />
-    <Compile Remove="Common\Persistence\Migrations\20200930140203_UserDealershipDelationship.Designer.cs" />
-  </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
     <Compile Remove="**\*.Specs.cs" />

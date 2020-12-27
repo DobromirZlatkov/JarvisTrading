@@ -12,13 +12,16 @@
     using Domain.Statistics.Models;
     using Events;
     using Identity;
+    using JarvisTrading.Domain.Signal.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using Statistics;
+    using Signal;
 
     internal class JarvisTradingDbContext : IdentityDbContext<User>,
         IDealershipDbContext,
-        IStatisticsDbContext
+        IStatisticsDbContext,
+        ISignalDbContext
     {
         private readonly IEventDispatcher eventDispatcher;
         private readonly Stack<object> savesChangesTracker;
@@ -32,6 +35,20 @@
 
             this.savesChangesTracker = new Stack<object>();
         }
+
+        /// <summary>
+        /// Signals domain
+        /// </summary>
+        public DbSet<Signal> Signals { get; set; } = default!;
+
+        public DbSet<Receiver> Receivers { get; set; } = default!;
+
+        public DbSet<Source> Sources { get; set; } = default!;
+
+        public DbSet<Update> Updates { get; set; } = default!;
+        /// <summary>
+        /// End Signals domain
+        /// </summary>
 
         public DbSet<CarAd> CarAds { get; set; } = default!;
 

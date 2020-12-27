@@ -10,6 +10,7 @@
     using Dealership;
     using Domain.Common;
     using Identity;
+    using JarvisTrading.Infrastructure.Signal;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -36,10 +37,12 @@
                 .AddDbContext<JarvisTradingDbContext>(options => options
                     .UseSqlServer(
                         configuration.GetConnectionString("DefaultConnection"),
-                        sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(JarvisTradingDbContext).Assembly.FullName)))
+                        sqlServer => sqlServer.MigrationsAssembly(typeof(JarvisTradingDbContext).Assembly.FullName)))
+                       //sqlServer => sqlServer.MigrationsAssembly("JarvisTrading.Startup")))
+                //.MigrationsAssembly(typeof(JarvisTradingDbContext).Assembly.FullName)))
                 .AddScoped<IDealershipDbContext>(provider => provider.GetService<JarvisTradingDbContext>())
                 .AddScoped<IStatisticsDbContext>(provider => provider.GetService<JarvisTradingDbContext>())
+                .AddScoped<ISignalDbContext>(provider => provider.GetService<JarvisTradingDbContext>())
                 .AddTransient<IInitializer, DatabaseInitializer>();
 
         internal static IServiceCollection AddRepositories(this IServiceCollection services)
