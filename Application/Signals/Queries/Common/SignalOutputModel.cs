@@ -1,9 +1,8 @@
-﻿namespace JarvisTrading.Application.Signals.Queries
+﻿namespace JarvisTrading.Application.Signals.Queries.Common
 {
     using JarvisTrading.Application.Common.Mapping;
     using JarvisTrading.Domain.Signals.Models;
     using System;
-    using System.Collections.Generic;
 
     public class SignalOutputModel : IMapFrom<Signal>
     {
@@ -32,7 +31,5 @@
         public string Magic { get; private set; } = default!;
 
         public SignalType SignalType { get; private set; } = default!;
-
-        public IReadOnlyCollection<Update> Updates { get; private set; } = default!;
     }
 }
