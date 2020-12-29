@@ -12,11 +12,11 @@
     using Domain.Statistics.Models;
     using Events;
     using Identity;
-    using JarvisTrading.Domain.Signal.Models;
+    using JarvisTrading.Domain.Signals.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using Statistics;
-    using Signal;
+    using Signals;
 
     internal class JarvisTradingDbContext : IdentityDbContext<User>,
         IDealershipDbContext,

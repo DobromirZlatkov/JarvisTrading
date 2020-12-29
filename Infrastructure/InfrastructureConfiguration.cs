@@ -10,7 +10,7 @@
     using Dealership;
     using Domain.Common;
     using Identity;
-    using JarvisTrading.Infrastructure.Signal;
+    using JarvisTrading.Infrastructure.Signals;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;

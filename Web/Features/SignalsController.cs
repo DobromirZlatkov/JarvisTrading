@@ -10,7 +10,7 @@
     {
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SignalOutputModel>>> Signals([FromQuery] GetSignalsQuery query)
+        public async Task<ActionResult<IEnumerable<SignalOutputModel>>> Get([FromQuery] GetSignalsQuery query)
             => await this.Send(query);
     }
 }

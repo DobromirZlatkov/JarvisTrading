@@ -1,7 +1,7 @@
 ﻿namespace JarvisTrading.Application.Signals.Queries
 {
     using JarvisTrading.Application.Common.Mapping;
-    using JarvisTrading.Domain.Signal.Models;
+    using JarvisTrading.Domain.Signals.Models;
     using System;
     using System.Collections.Generic;
 
